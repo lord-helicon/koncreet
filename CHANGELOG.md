@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- dry-run: no longer asks the fail2ban whitelist question (shown as a `PLAN:` line instead), no longer prints the "Before you disconnect" checklist, and ends with "Dry-run done - nothing changed"
+- log: dry-run as root logs to `/var/log/koncreet.log` (tagged `dry-run`) instead of `/opt/koncreet/koncreet.log`, which `install.sh` and `uninstall` delete; non-root runs log to `~/.local/state/koncreet/`
+
 ## 0.3.0
 
 First release of the [lord-helicon/koncreet](https://github.com/lord-helicon/koncreet) fork of [jimididit/koncreet](https://github.com/jimididit/koncreet).
