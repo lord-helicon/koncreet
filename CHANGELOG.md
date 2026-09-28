@@ -1,6 +1,10 @@
 # Changelog
 
-## Unreleased
+## 0.3.1
+
+Fixes found while testing 0.3.0 on a real Ubuntu 24.04 VPS.
+
+**Upgrading from 0.3.0:** re-running the installer does not change files 0.3.0 already wrote. Run `sudo koncreet doctor`; if it reports koncreet config readable by root only, it prints the `chmod` commands to fix it.
 
 - doctor: the admin-user check now matches `ssh apply` (keys **and** sudo); the SSH check finds `00-koncreet.conf` (flags legacy `99-koncreet.conf`) and verifies effective settings with `sshd -T`; warns about root-only koncreet config and prints the `chmod` fix; never prompts for a sudo password when run as non-root
 - baseline: creating a user ran `umask 077` in the main shell, so every file written later in the same run (sysctl, journald, logrotate, fail2ban and apt config) was root-only and new directories were `700`; non-root tools such as command-not-found then warned about unreadable apt config. The umask is now limited to the password file, and koncreet always runs with `umask 022`
