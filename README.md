@@ -18,7 +18,7 @@ sudo koncreet doctor
 sudo koncreet
 ```
 
-Pin a version with `KONCREET_VERSION=0.3.0`. Fallback if you want `main`:
+Pin a version with `KONCREET_VERSION=0.3.1`. Fallback if you want `main`:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/lord-helicon/koncreet/main/install.sh | sudo bash
