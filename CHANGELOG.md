@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.3.0
+
+First release of the [lord-helicon/koncreet](https://github.com/lord-helicon/koncreet) fork of [jimididit/koncreet](https://github.com/jimididit/koncreet).
 
 - ssh: drop-in renamed to `00-koncreet.conf` so it wins over `50-cloud-init.conf` (sshd keeps the first value); `ssh apply` verifies effective settings with `sshd -T` and rolls back on override; `ssh status` shows effective values. Legacy `99-koncreet.conf` is migrated.
 - ssh: hardening gate now requires the key user to have sudo, and asks you to confirm a koncreet-generated sudo password was saved before root login is disabled
@@ -9,6 +11,7 @@
 - Error/warning/info messages (including every `die`) were silently dropped from the terminal; they now print
 - apply: SSH hardening is decided once before the run, so a plan that says "SKIP SSH harden" no longer hardens SSH after `baseline` creates the user in the same run
 - CI: `tests/integration.sh` runs lockout scenarios against a real sshd, sudo and ufw rule parser on Debian 12/13 and Ubuntu 22.04/24.04
+- Installer and README point at `lord-helicon/koncreet` (`KONCREET_REPO` still overrides)
 
 ## 0.2.3
 
