@@ -8,10 +8,12 @@ First-hour hardening for a fresh Linux VPS. Plain Bash, change plans before it t
 
 **Debian 12/13 and Ubuntu 22.04/24.04 only.**
 
+Fork of [jimididit/koncreet](https://github.com/jimididit/koncreet) with additional SSH/firewall lockout-safety fixes (see [`CHANGELOG.md`](CHANGELOG.md)).
+
 ## Install
 
 ```bash
-curl -fsSL https://github.com/jimididit/koncreet/releases/latest/download/install.sh | sudo bash
+curl -fsSL https://github.com/lord-helicon/koncreet/releases/latest/download/install.sh | sudo bash
 sudo koncreet doctor
 sudo koncreet
 ```
@@ -19,10 +21,10 @@ sudo koncreet
 Pin a version with `KONCREET_VERSION=0.2.3`. Fallback if you want `main`:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jimididit/koncreet/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/lord-helicon/koncreet/main/install.sh | sudo bash
 ```
 
-Or clone: `git clone https://github.com/jimididit/koncreet.git && cd koncreet && sudo ./koncreet`
+Or clone: `git clone https://github.com/lord-helicon/koncreet.git && cd koncreet && sudo ./koncreet`
 
 ## What you get
 
