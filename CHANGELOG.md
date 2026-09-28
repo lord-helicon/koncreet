@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- doctor: as a normal user, say when `/etc/ssh/sshd_config.d` is unreadable (some images restrict `/etc/ssh`) instead of silently skipping the SSH hardening check
+
 ## 0.3.1
 
 Fixes found while testing 0.3.0 on a real Ubuntu 24.04 VPS.
