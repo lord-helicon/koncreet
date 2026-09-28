@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Install koncreet without git. Safe to re-run (updates in place).
 #
-#   curl -fsSL https://raw.githubusercontent.com/jimididit/koncreet/main/install.sh | sudo bash
+#   curl -fsSL https://raw.githubusercontent.com/lord-helicon/koncreet/main/install.sh | sudo bash
 #
 # Or pin a release:
-#   curl -fsSL https://github.com/jimididit/koncreet/releases/latest/download/install.sh | sudo bash
+#   curl -fsSL https://github.com/lord-helicon/koncreet/releases/latest/download/install.sh | sudo bash
 #   KONCREET_VERSION=0.1.0 curl -fsSL ... | sudo bash
 #
 # Env:
@@ -12,7 +12,7 @@
 #   KONCREET_INSTALL_DIR  install root (default /opt/koncreet)
 set -euo pipefail
 
-REPO="${KONCREET_REPO:-jimididit/koncreet}"
+REPO="${KONCREET_REPO:-lord-helicon/koncreet}"
 DEST="${KONCREET_INSTALL_DIR:-/opt/koncreet}"
 VERSION="${KONCREET_VERSION:-latest}"
 TMP="$(mktemp -d)"
