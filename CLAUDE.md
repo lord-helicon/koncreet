@@ -11,12 +11,14 @@ Koncreet is a plain-Bash, first-hour hardening tool for a fresh Linux VPS. It ta
 ```bash
 bash tests/run.sh                 # unit tests (plain assert runner, no bats)
 bash tests/smoke-dry-run.sh       # version + doctor + dry-run apply of share/koncreet.conf.example
+docker run --rm -v "$PWD":/k -w /k -e KONCREET_INTEGRATION_OK=1 ubuntu:24.04 bash tests/integration.sh   # real sshd/sudo/ufw scenarios
 shellcheck -S error koncreet install.sh lib/*.sh modules/*.sh   # what CI enforces
 ```
 
 - **Bash 4+ is required.** macOS `/bin/bash` is 3.2 and fails on `declare -A` and `mapfile` (e.g. `modules/firewall.sh: http: unbound variable`). Run with Homebrew bash or in a container: `docker run --rm -v "$PWD":/k -w /k debian:12 bash tests/run.sh`.
 - `tests/run.sh` is one sequential script with no per-test filter. To check a single area, source the relevant `lib/`/`modules/` files in a subshell and call the function directly, the way the test file does.
 - CI runs ShellCheck at `-S error` only, because `KONCREET_CFG_*` vars set in `lib/config.sh` and read elsewhere trip SC2034 across files. Don't "fix" those warnings by removing variables.
+- `tests/integration.sh` is destructive (creates users, rewrites `/etc/ssh`) and refuses to run without `KONCREET_INTEGRATION_OK=1`; only run it in a throwaway container. It stubs `systemctl`/`timedatectl`/`swapon` because containers have no systemd, so real service reloads and ufw enabling are still untested. When fixing a lockout bug, add a scenario there and check it fails against the old code.
 - Smoke CI runs in `debian:12` and `ubuntu:24.04` containers without root, systemd, or ufw, so dry-run paths must not require any of them.
 
 ## Releasing
